@@ -1,52 +1,95 @@
-export const User = () => {
+import PropTypes from 'prop-types';
+import { IconLocation } from '../../assets/IconLocation';
+import { IconTwitter } from '../../assets/IconTwitter';
+import { IconCompany } from '../../assets/IconCompany';
+import { IconWebsite as IconLink } from '../../assets/IconWebsite';
+import './User.scss';
+
+export const User = ({ data }) => {
   return (
     <>
-      <main>
-        <section>{/* Image Profile */}</section>
+      <main className='user'>
+        <section className='user__profile'>
+          <img
+            src={data.avatar_url}
+            alt={data.name}
+          />
 
-        <section>
-          <div>
-            <h1>The Octocat</h1>
+          <div className='user__profile-name'>
+            <h1>{data.name}</h1>
+            <p>@{data.login}</p>
 
-            <p>Joined 25 Jan 2011</p>
+            <p>{data.created_at}</p>
           </div>
 
-          <div>
-            <p>@octocat</p>
+          <div className='user__profile-bio'>
+            {data.bio}
           </div>
 
-          <div>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate
-            eum vitae quibusdam a sequi minima necessitatibus beatae eaque
-            distinctio natus velit optio eveniet, similique impedit, nulla amet!
-            Ea, recusandae id.
-          </div>
-
-          <div>
-            <ul>
+          <div className='user__profile-stats-links'>
+            <ul className='user__profile-stats'>
               <li>
                 <h4>Repos</h4>
-                <p>8</p>
+                <p>{data.public_repos}</p>
               </li>
               <li>
                 <h4>Followers</h4>
-                <p>3938</p>
+                <p>{data.followers}</p>
               </li>
               <li>
                 <h4>Following</h4>
-                <p>9</p>
+                <p>{data.following}</p>
               </li>
             </ul>
 
-            <div>
-              <p>Location</p>
-              <a href=''>Twitter</a>
-              <a href=''>Link</a>
-              <a href=''>Company</a>
+            <div className='user__profile-link'>
+              <ul className='user__profile-link-list'>
+                <li>
+                  <span>
+                    <IconLocation />
+                  </span>
+                  <p>{data.location}</p>
+                </li>
+                <li>
+                  <span>
+                    <IconLink />
+                  </span>
+                  <a href={data.blog}>{data.blog}</a>
+                </li>
+                <li>
+                  <span>
+                    <IconTwitter />
+                  </span>
+                  <a href='#'>{data.twitter_username}</a>
+                </li>
+                <li>
+                  <span>
+                    <IconCompany />
+                  </span>
+                  <a href='#'>{data.company}</a>
+                </li>
+              </ul>
             </div>
           </div>
         </section>
       </main>
     </>
   );
+};
+
+User.propTypes = {
+  data: PropTypes.shape({
+    avatar_url: PropTypes.string,
+    name: PropTypes.string,
+    created_at: PropTypes.string,
+    login: PropTypes.string,
+    bio: PropTypes.string,
+    public_repos: PropTypes.number,
+    followers: PropTypes.number,
+    following: PropTypes.number,
+    location: PropTypes.string,
+    twitter_username: PropTypes.string,
+    blog: PropTypes.string,
+    company: PropTypes.string,
+  }),
 };

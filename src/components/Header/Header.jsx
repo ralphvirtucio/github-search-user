@@ -1,17 +1,18 @@
-import { IconMoon } from "../../assets/Moon"
+import { IconMoon } from '../../assets/IconMoon';
+import './Header.scss';
 
 export const Header = () => {
   return (
-    <header>
+    <header className='header'>
       <h1>devfinder</h1>
 
-
-      <button>
-        Dark
-        <IconMoon />
-      </button>
+      <div>
+        <label htmlFor='light-dark-mode'>
+          Dark
+          <IconMoon />
+        </label>
+        <input type='checkbox' id='light-dark-mode' />
+      </div>
     </header>
-  )
-}
-
-
+  );
+};
