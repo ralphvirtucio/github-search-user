@@ -17,13 +17,16 @@ export const User = ({ data }) => {
 
           <div className='user__profile-name'>
             <h1>{data.name}</h1>
-            <p>@{data.login}</p>
+            <p className='user__profile-name-login'>@{data.login}</p>
 
-            <p>{data.created_at}</p>
+            {/* <p>{data.created_at}</p> */}
+            <p>Joined 25 Jan 2011</p>
           </div>
 
           <div className='user__profile-bio'>
+            <p>
             {data.bio}
+            </p>
           </div>
 
           <div className='user__profile-stats-links'>
