@@ -1,33 +1,30 @@
-import { useState } from 'react'
-import './App.css'
 
-// api to be use - https://docs.github.com/en/rest/users/users?apiVersion=2022-11-28#get-a-user
-
-function App() {
-  const [count, setCount] = useState(0)
+// // api to be use - https://docs.github.com/en/rest/users/users?apiVersion=2022-11-28#get-a-user
 
 
-  // devfinder
+//   // devfinder
 
-  // Light
-  // Dark
+//   // Light
+//   // Dark
 
-  // Search GitHub username...
-  // Search
+//   // Search GitHub username...
+//   // Search
 
-  // Joined
+//   // Joined
 
-  // Repos
-  // Followers
-  // Following
+//   // Repos
+//   // Followers
+//   // Following
 
+
+const App = () => {
   return (
     <>
-     <div>
-      <h1>Hello World</h1>
-     </div>
+      <div>
+        <h1>Hello World</h1>
+      </div>
     </>
   )
 }
 
-export default App
+export default App;
