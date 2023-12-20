@@ -1,7 +1,12 @@
 import { IconSearch } from '../../assets/IconSearch';
 import './Search.scss';
 
-export const Search = ({ search, onChangeUser, onSearchUser }) => {
+export const Search = ({
+  search,
+  onChangeUser,
+  onSearchUser,
+  noSearchResult,
+}) => {
   function handleSearchUser({ target }) {
     const githubUser = target.value;
     onChangeUser(githubUser);
@@ -23,6 +28,14 @@ export const Search = ({ search, onChangeUser, onSearchUser }) => {
           value={search}
           onChange={handleSearchUser}
         />
+
+        <div>
+          {noSearchResult ? (
+            <p className='no-search-results'>No results</p>
+          ) : (
+            ''
+          )}
+        </div>
 
         <button
           type='submit'

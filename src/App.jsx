@@ -10,6 +10,7 @@ import defaultGithubUser from './data/default_user.json';
 const App = () => {
   const [search, setSearch] = useState('octocat');
   const [githubUser, setGithubUser] = useState(defaultGithubUser);
+  const [noSearchResult, setNoSearchResult] = useState(false);
 
   const octokit = new Octokit({
     auth: import.meta.env.VITE_GITHUB_USER_TOKEN,
@@ -28,11 +29,12 @@ const App = () => {
 
       if (response.status === 200) {
         setGithubUser(response.data);
+        setNoSearchResult(false);
       } else {
         throw new Error('Something went wrong fetching an user');
       }
     } catch (error) {
-      console.log(error);
+      setNoSearchResult(true);
     }
   }
 
@@ -47,6 +49,7 @@ const App = () => {
         search={search}
         onChangeUser={handleGithubUser}
         onSearchUser={handleSubmitUser}
+        noSearchResult={noSearchResult}
       />
       <UserContainer githubUser={githubUser} />
     </>
