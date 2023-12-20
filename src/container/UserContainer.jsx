@@ -1,10 +1,7 @@
-import {User} from '../components/User/User';
-import githubUserData from '../../data/sample-user-response.json';
+import { User } from '../components/User/User';
 
-
-
-const UserContainer = () => {
-  return <User data={githubUserData} />
-}
+const UserContainer = ({ githubUser }) => {
+  return <User data={githubUser} />;
+};
 
 export default UserContainer;
