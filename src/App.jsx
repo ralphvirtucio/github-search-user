@@ -1,19 +1,19 @@
 // // api to be use - https://docs.github.com/en/rest/users/users?apiVersion=2022-11-28#get-a-user
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import HeaderContainer from './container/HeaderContainer';
 import SearchContainer from './container/SearchContainer';
 import UserContainer from './container/UserContainer';
 import { Octokit } from 'octokit';
 import defaultGithubUser from './data/default_user.json';
 
-const octokit = new Octokit({
-  auth: import.meta.env.VITE_GITHUB_USER_TOKEN,
-});
-
 const App = () => {
   const [search, setSearch] = useState('octocat');
   const [githubUser, setGithubUser] = useState(defaultGithubUser);
+
+  const octokit = new Octokit({
+    auth: import.meta.env.VITE_GITHUB_USER_TOKEN,
+  });
 
   async function handleSubmitUser(e) {
     e.preventDefault();

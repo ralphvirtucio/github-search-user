@@ -5,7 +5,14 @@ import { IconCompany } from '../../assets/IconCompany';
 import { IconWebsite as IconLink } from '../../assets/IconWebsite';
 import './User.scss';
 
-export const User = ({ data }) => {
+export const User = ({
+  data,
+  formatName,
+  formatBio,
+  formatLink,
+  isFieldEmptyClassName,
+  linkDisableAttr,
+}) => {
   return (
     <>
       <main className='user'>
@@ -16,17 +23,16 @@ export const User = ({ data }) => {
           />
 
           <div className='user__profile-name'>
-            <h1>{data.name}</h1>
+            <h1>{formatName(data.name)}</h1>
             <p className='user__profile-name-login'>@{data.login}</p>
 
             {/* <p>{data.created_at}</p> */}
             <p>Joined 25 Jan 2011</p>
           </div>
 
-          <div className='user__profile-bio'>
-            <p>
-            {data.bio}
-            </p>
+          <div
+            className={`user__profile-bio ${isFieldEmptyClassName(data.bio)}`}>
+            <p>{formatBio(data.bio)}</p>
           </div>
 
           <div className='user__profile-stats-links'>
@@ -47,29 +53,46 @@ export const User = ({ data }) => {
 
             <div className='user__profile-link'>
               <ul className='user__profile-link-list'>
-                <li>
+                <li className={isFieldEmptyClassName(data.location)}>
                   <span>
                     <IconLocation />
                   </span>
-                  <p>{data.location}</p>
+                  <p>{formatLink(data.location)}</p>
                 </li>
-                <li>
+                <li className={isFieldEmptyClassName(data.blog)}>
                   <span>
                     <IconLink />
                   </span>
-                  <a href={data.blog}>{data.blog}</a>
+                  <a
+                    href={linkDisableAttr(data.blog, data.blog).href}
+                    role={linkDisableAttr(data.blog).role}
+                    aria-disabled={linkDisableAttr(data.blog).ariaDisabled}>
+                    {formatLink(data.blog)}
+                  </a>
                 </li>
-                <li>
+                <li className={isFieldEmptyClassName(data.twitter_username)}>
                   <span>
                     <IconTwitter />
                   </span>
-                  <a href='#'>{data.twitter_username}</a>
+                  <a
+                    href={linkDisableAttr(data.twitter_username).href}
+                    role={linkDisableAttr(data.twitter_username).role}
+                    aria-disabled={
+                      linkDisableAttr(data.twitter_username).ariaDisabled
+                    }>
+                    {formatLink(data.twitter_username)}
+                  </a>
                 </li>
-                <li>
+                <li className={isFieldEmptyClassName(data.company)}>
                   <span>
                     <IconCompany />
                   </span>
-                  <a href='#'>{data.company}</a>
+                  <a
+                    href={linkDisableAttr(data.company).href}
+                    role={linkDisableAttr(data.company).role}
+                    aria-disabled={linkDisableAttr(data.company).ariaDisabled}>
+                    {formatLink(data.company)}
+                  </a>
                 </li>
               </ul>
             </div>
@@ -95,4 +118,9 @@ User.propTypes = {
     blog: PropTypes.string,
     company: PropTypes.string,
   }),
+  formatName: PropTypes.func,
+  formatBio: PropTypes.func,
+  formatLink: PropTypes.func,
+  isFieldEmptyClassName: PropTypes.func,
+  linkDisableAttr: PropTypes.func,
 };
