@@ -8,7 +8,7 @@ import { Octokit } from 'octokit';
 import defaultGithubUser from './data/default_user.json';
 
 const App = () => {
-  const [search, setSearch] = useState('octocat');
+  const [search, setSearch] = useState('');
   const [githubUser, setGithubUser] = useState(defaultGithubUser);
   const [noSearchResult, setNoSearchResult] = useState(false);
 
@@ -44,14 +44,16 @@ const App = () => {
 
   return (
     <>
-      <HeaderContainer />
-      <SearchContainer
-        search={search}
-        onChangeUser={handleGithubUser}
-        onSearchUser={handleSubmitUser}
-        noSearchResult={noSearchResult}
-      />
-      <UserContainer githubUser={githubUser} />
+      <div className='wrapper'>
+        <HeaderContainer />
+        <SearchContainer
+          search={search}
+          onChangeUser={handleGithubUser}
+          onSearchUser={handleSubmitUser}
+          noSearchResult={noSearchResult}
+        />
+        <UserContainer githubUser={githubUser} />
+      </div>
     </>
   );
 };

@@ -1,0 +1,23 @@
+@use '../../scss/abstracts' as *;
+
+.theme__button {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  text-transform: uppercase;
+  font-size: $font-13;
+  font-weight: $font-weight-700;
+  letter-spacing: 0.15625rem;
+
+  span {
+    line-height: 0;
+  }
+
+  &--checkbox {
+    display: none;
+
+    &:checked + label {
+      color: #fff;
+    }
+  }
+}

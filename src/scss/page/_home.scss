@@ -1,8 +1,12 @@
 @use '../abstracts' as *;
 
-
 body {
   font-family: $ff-base;
-  background-color: #F6F8FF;
+  background-color: #f6f8ff;
+  display: grid;
+  place-items: center;
 }
 
+.wrapper {
+  max-width: 35rem;
+}
