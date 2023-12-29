@@ -23,11 +23,15 @@ export const User = ({
             alt={data.name}
           />
 
-          <div className='user__profile-name'>
-            <h1>{formatName(data.name)}</h1>
-            <p className='user__profile-name-login'>@{data.login}</p>
+          <div className='user__profile-info'>
+            <div className='user__profile-info--names'>
+              <h1>{formatName(data.name)}</h1>
+              <p className='user__profile-info-login'>@{data.login}</p>
+            </div>
 
-            <p>Joined {formatCreatedDate(data.created_at)}</p>
+            <p className='user__profile-info--created_at'>
+              Joined {formatCreatedDate(data.created_at)}
+            </p>
           </div>
 
           <div
