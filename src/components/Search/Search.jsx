@@ -24,7 +24,7 @@ export const Search = ({
 
         <input
           type='text'
-          placeholder='Search GitHub username'
+          placeholder='Search GitHub username...'
           className='search__form-input'
           value={search}
           onChange={handleSearchUser}

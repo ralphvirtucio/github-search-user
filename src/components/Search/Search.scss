@@ -30,6 +30,7 @@
       &::placeholder {
         font-size: $font-13;
         line-height: $line-height-25;
+        color: #4b6a9b;
       }
     }
 
@@ -42,6 +43,8 @@
       margin-inline-end: 0.5rem;
       padding-inline: 1rem;
       padding-block: 0.85rem;
+      font-weight: 700;
+      font-size: 0.875rem;
     }
   }
 }

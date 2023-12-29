@@ -49,6 +49,39 @@ const UserContainer = ({ githubUser }) => {
     }
   }
 
+  const shortenMonths = (month) => {
+    if (month.length === 3) {
+      return month;
+    } else {
+      return month.slice(0, 3);
+    }
+  };
+
+  function formatCreatedDate(createdDate) {
+    const monthNames = [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
+    ];
+
+    const date = new Date(createdDate);
+    const year = date.getFullYear();
+    const dateMonth = date.getDate();
+    const indexOfMonth = date.getMonth();
+    const shortenedMonth = shortenMonths(monthNames[indexOfMonth]);
+
+    return `${dateMonth} ${shortenedMonth} ${year}`;
+  }
+
   return (
     <User
       data={githubUser}
@@ -57,6 +90,7 @@ const UserContainer = ({ githubUser }) => {
       formatLink={formatLink}
       isFieldEmptyClassName={isFieldEmptyClassName}
       linkDisableAttr={linkDisableAttr}
+      formatCreatedDate={formatCreatedDate}
     />
   );
 };

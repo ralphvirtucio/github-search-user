@@ -1,7 +1,14 @@
+@use '../../scss/abstracts/' as *;
+
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding-inline: 1rem;
   margin-block: 2rem;
+
+  h1 {
+    font-size: $font-26;
+    color: #222731;
+  }
 }

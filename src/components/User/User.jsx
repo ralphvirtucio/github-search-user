@@ -12,6 +12,7 @@ export const User = ({
   formatLink,
   isFieldEmptyClassName,
   linkDisableAttr,
+  formatCreatedDate,
 }) => {
   return (
     <>
@@ -26,8 +27,7 @@ export const User = ({
             <h1>{formatName(data.name)}</h1>
             <p className='user__profile-name-login'>@{data.login}</p>
 
-            {/* <p>{data.created_at}</p> */}
-            <p>Joined 25 Jan 2011</p>
+            <p>Joined {formatCreatedDate(data.created_at)}</p>
           </div>
 
           <div
@@ -123,4 +123,5 @@ User.propTypes = {
   formatLink: PropTypes.func,
   isFieldEmptyClassName: PropTypes.func,
   linkDisableAttr: PropTypes.func,
+  formatCreatedDate: PropTypes.func,
 };
