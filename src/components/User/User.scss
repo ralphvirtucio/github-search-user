@@ -216,6 +216,13 @@
             &:active {
               text-decoration: none;
               color: #4b6a9b;
+              transition: all 0.2s ease-in;
+              cursor: pointer;
+            }
+
+            &:hover {
+              color: hsla(217, 35%, 45%, 1);
+              text-decoration: underline;
             }
           }
 

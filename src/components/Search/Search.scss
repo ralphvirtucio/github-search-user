@@ -59,6 +59,12 @@
       padding-block: 0.85rem;
       font-weight: 700;
       font-size: 0.875rem;
+      cursor: pointer;
+      transition: background-color 100ms ease-in;
+
+      &:hover {
+        background-color: hsla(212, 100%, 69%, 1);
+      }
 
       @media only screen and (min-width: $breakpoint-tablet) {
         font-size: 1rem;
@@ -74,4 +80,8 @@
   font-size: 0.9375rem;
   // font-size: 0.5rem;
   line-height: normal;
+
+  @media only screen and (min-width: $breakpoint-tablet) {
+    margin-inline-end: 1rem;
+  }
 }
