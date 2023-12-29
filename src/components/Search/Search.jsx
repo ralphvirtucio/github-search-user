@@ -1,4 +1,5 @@
 import { IconSearch } from '../../assets/IconSearch';
+import PropTypes from 'prop-types';
 import './Search.scss';
 
 export const Search = ({
@@ -45,4 +46,11 @@ export const Search = ({
       </form>
     </div>
   );
+};
+
+Search.propTypes = {
+  search: PropTypes.string,
+  onChangeUser: PropTypes.func,
+  onSearchUser: PropTypes.func,
+  noSearchResult: PropTypes.bool,
 };

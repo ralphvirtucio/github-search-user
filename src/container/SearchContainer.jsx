@@ -1,4 +1,5 @@
 import { Search } from '../components/Search/Search';
+import PropTypes from 'prop-types';
 
 const SearchContainer = ({
   search,
@@ -14,6 +15,13 @@ const SearchContainer = ({
       noSearchResult={noSearchResult}
     />
   );
+};
+
+SearchContainer.propTypes = {
+  search: PropTypes.string,
+  onChangeUser: PropTypes.func,
+  onSearchUser: PropTypes.func,
+  noSearchResult: PropTypes.bool,
 };
 
 export default SearchContainer;
