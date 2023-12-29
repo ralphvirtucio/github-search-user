@@ -2,7 +2,7 @@
 
 .search {
   padding-inline: 1rem;
-  margin-block-end: 1rem;
+  margin-block-end: 1.5rem;
 
   &__form {
     display: flex;
@@ -15,6 +15,10 @@
     &-icon-container {
       margin-inline-start: 0.75rem;
       line-height: 0;
+
+      @media only screen and (min-width: $breakpoint-tablet) {
+        margin-inline-start: 2rem;
+      }
     }
 
     &-input {
@@ -27,10 +31,20 @@
       line-height: $line-height-25;
       width: 80%;
 
+      @media only screen and (min-width: $breakpoint-tablet) {
+        font-size: 1.125rem;
+        line-height: $line-height-25;
+      }
+
       &::placeholder {
         font-size: $font-13;
         line-height: $line-height-25;
         color: #4b6a9b;
+
+        @media only screen and (min-width: $breakpoint-tablet) {
+          font-size: 1.125rem;
+          line-height: $line-height-25;
+        }
       }
     }
 
@@ -45,6 +59,11 @@
       padding-block: 0.85rem;
       font-weight: 700;
       font-size: 0.875rem;
+
+      @media only screen and (min-width: $breakpoint-tablet) {
+        font-size: 1rem;
+        padding-inline: 1.5rem;
+      }
     }
   }
 }

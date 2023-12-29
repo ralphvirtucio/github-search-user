@@ -3,7 +3,7 @@ export const IconLocation = () => {
     <>
       <svg
         height='20'
-        width='14'
+        width='20'
         xmlns='http://www.w3.org/2000/svg'
         aria-hidden='true'>
         <path
