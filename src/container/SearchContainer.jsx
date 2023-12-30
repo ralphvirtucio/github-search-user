@@ -7,12 +7,15 @@ const SearchContainer = ({
   onSearchUser,
   noSearchResult,
 }) => {
+  const isDisabled = !search;
+
   return (
     <Search
       search={search}
       onChangeUser={onChangeUser}
       onSearchUser={onSearchUser}
       noSearchResult={noSearchResult}
+      isDisabled={isDisabled}
     />
   );
 };

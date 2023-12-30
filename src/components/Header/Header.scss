@@ -10,5 +10,9 @@
   h1 {
     font-size: $font-26;
     color: #222731;
+
+    @include themify($themes) {
+      color: themed('color__main-heading');
+    }
   }
 }

@@ -74,9 +74,9 @@ const UserContainer = ({ githubUser }) => {
     ];
 
     const date = new Date(createdDate);
-    const year = date.getFullYear();
-    const dateMonth = date.getDate();
-    const indexOfMonth = date.getMonth();
+    const year = date?.getFullYear();
+    const dateMonth = date?.getDate();
+    const indexOfMonth = date?.getMonth();
     const shortenedMonth = shortenMonths(monthNames[indexOfMonth]);
 
     return `${dateMonth} ${shortenedMonth} ${year}`;

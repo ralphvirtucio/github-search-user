@@ -7,12 +7,14 @@ export const Search = ({
   onChangeUser,
   onSearchUser,
   noSearchResult,
+  isDisabled,
 }) => {
   function handleSearchUser({ target }) {
     const githubUser = target.value;
     onChangeUser(githubUser);
   }
 
+  console.log(isDisabled);
   return (
     <div className='search'>
       <form
@@ -40,7 +42,8 @@ export const Search = ({
 
         <button
           type='submit'
-          className='search__form-btn'>
+          className='search__form-btn'
+          disabled={isDisabled}>
           Search
         </button>
       </form>
@@ -53,4 +56,5 @@ Search.propTypes = {
   onChangeUser: PropTypes.func,
   onSearchUser: PropTypes.func,
   noSearchResult: PropTypes.bool,
+  isDisabled: PropTypes.bool,
 };

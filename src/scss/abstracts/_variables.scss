@@ -16,3 +16,29 @@ $line-height-20: 1.25rem;
 $line-height-25: 1.5625rem;
 
 $font-weight-700: 700;
+
+$accent-color__one: #0879ff;
+
+$themes: (
+  light: (
+    color__bg: #f6f8ff,
+    color__heading: #2b3442,
+    color__bg-card: #fefefe,
+    color__body-text: #4b6a9b,
+    color__theme-btn: #90a4d4,
+    color__main-heading: #222731,
+    color__not-available: hsla(217, 35%, 45%, 0.5),
+    color__created-date: #697c9a,
+  ),
+
+  dark: (
+    color__bg: #141d2f,
+    color__bg-card: #1e2a47,
+    color__heading: #fff,
+    color__body-text: #fff,
+    color__theme-btn: #fff,
+    color__main-heading: #fff,
+    color__not-available: #ffffff8e,
+    color__created-date: #fff,
+  ),
+);

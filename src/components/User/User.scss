@@ -1,7 +1,6 @@
 @use '../../scss/abstracts' as *;
 
 .user {
-  background-color: #fefefe;
   box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.2);
   margin-inline: 1rem;
   border-radius: 15px;
@@ -10,6 +9,11 @@
   color: #4b6a9b;
   margin-block-end: 5rem;
   overflow: auto;
+
+  @include themify($themes) {
+    background-color: themed('color__bg-card');
+    color: themed('color__body-text');
+  }
 
   @media only screen and (min-width: $breakpoint-tablet) {
     padding-inline: 2.5rem;
@@ -54,14 +58,21 @@
         color: #2b3442;
         font-size: $font-16;
 
+        @include themify($themes) {
+          color: themed('color__heading');
+        }
+
         @media only screen and (min-width: $breakpoint-tablet) {
           font-size: $font-26;
         }
       }
 
       &--created_at {
-        color: #697c9a;
         font-size: $font-13;
+
+        @include themify($themes) {
+          color: themed('color__created-date');
+        }
 
         @media only screen and (min-width: $breakpoint-tablet) {
           font-size: $font-15;
@@ -120,8 +131,11 @@
       padding-block: 1rem;
       padding-inline: 0;
       list-style-type: none;
-      background-color: #f6f8ff;
       margin: 0;
+
+      @include themify($themes) {
+        background-color: themed('color__bg');
+      }
 
       @media only screen and (min-width: $breakpoint-tablet) {
         justify-content: space-between;
@@ -139,9 +153,12 @@
         }
 
         h4 {
-          color: #4b6a9b;
           font-weight: 400;
           font-size: 0.6875rem;
+
+          @include themify($themes) {
+            color: themed('color__body-text');
+          }
 
           @media only screen and (min-width: $breakpoint-tablet) {
             font-size: $font-13;
@@ -149,8 +166,11 @@
         }
 
         p {
-          color: #2b3442;
           font-weight: $font-weight-700;
+
+          @include themify($themes) {
+            color: themed('color__heading');
+          }
 
           @media only screen and (min-width: $breakpoint-tablet) {
             font-size: $font-22;
@@ -184,7 +204,9 @@
           grid-template-columns: auto 1fr;
           align-items: center;
           column-gap: 1.2rem;
-          color: #4b6a9b;
+          @include themify($themes) {
+            color: themed('color__body-text');
+          }
 
           @media only screen and (min-width: $breakpoint-tablet) {
             column-gap: 1rem;
@@ -208,6 +230,12 @@
 
           span {
             line-height: 0;
+
+            svg path {
+              @include themify($themes) {
+                fill: themed('color__body-text');
+              }
+            }
           }
 
           a {
@@ -218,11 +246,20 @@
               color: #4b6a9b;
               transition: all 0.2s ease-in;
               cursor: pointer;
+
+              @include themify($themes) {
+                color: themed('color__body-text');
+              }
             }
 
             &:hover {
               color: hsla(217, 35%, 45%, 1);
               text-decoration: underline;
+            }
+
+            &[aria-disabled='true'] {
+              text-decoration: none;
+              cursor: initial;
             }
           }
 
@@ -231,10 +268,15 @@
               svg path {
                 fill: hsla(217, 35%, 45%, 0.5);
                 // opacity: 0.5;
+                @include themify($themes) {
+                  fill: themed('color__not-available');
+                }
               }
             }
             a {
-              color: hsla(217, 35%, 45%, 0.5);
+              @include themify($themes) {
+                color: themed('color__not-available');
+              }
             }
           }
         }
@@ -244,5 +286,7 @@
 }
 
 .user__profile-bio.field_empty {
-  color: hsla(217, 35%, 45%, 0.5);
+  @include themify($themes) {
+    color: themed('color__not-available');
+  }
 }

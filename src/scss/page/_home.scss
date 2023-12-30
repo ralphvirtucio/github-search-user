@@ -3,8 +3,16 @@
 body {
   font-family: $ff-base;
   background-color: #f6f8ff;
+}
+
+.container {
   display: grid;
   place-items: center;
+  min-height: 100vh;
+
+  @include themify($themes) {
+    background-color: themed('color__bg');
+  }
 }
 
 .wrapper {

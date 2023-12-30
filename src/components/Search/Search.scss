@@ -8,9 +8,13 @@
     display: flex;
     align-items: center;
     gap: 0.5ch;
-    background-color: #fefefe;
     border-radius: 15px;
     box-shadow: 0px 16px 30px -10px rgba(70, 96, 187, 0.2);
+
+    @include themify($themes) {
+      background-color: themed('color__bg-card');
+      color: themed('color__body-text');
+    }
 
     &-icon-container {
       margin-inline-start: 0.75rem;
@@ -24,12 +28,14 @@
     &-input {
       border: none;
       background-color: transparent;
-      color: #4b6a9b;
       font-size: $font-13;
       flex: 1;
       outline: none;
       line-height: $line-height-25;
       width: 80%;
+      @include themify($themes) {
+        color: themed('color__body-text');
+      }
 
       @media only screen and (min-width: $breakpoint-tablet) {
         font-size: 1.125rem;
@@ -39,7 +45,10 @@
       &::placeholder {
         font-size: $font-13;
         line-height: $line-height-25;
-        color: #4b6a9b;
+
+        @include themify($themes) {
+          color: themed('color__body-text');
+        }
 
         @media only screen and (min-width: $breakpoint-tablet) {
           font-size: 1.125rem;
@@ -64,6 +73,10 @@
 
       &:hover {
         background-color: hsla(212, 100%, 69%, 1);
+      }
+
+      &:disabled {
+        background-color: rgb(129, 188, 255);
       }
 
       @media only screen and (min-width: $breakpoint-tablet) {

@@ -1,33 +1,47 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { IconMoon } from '../../assets/IconMoon';
 import { IconSun } from '../../assets/IconSun';
 import './ThemeButton.scss';
+import { ThemeContext } from '../../contexts/Context';
 
 export const ThemeButton = () => {
-  const [isChecked, setIsChecked] = useState(false);
+  const { theme, setTheme } = useContext(ThemeContext);
 
-  function handleIsChecked(e) {
-    setIsChecked(e.target.checked);
+  function handleToggleTheme() {
+    const isCurrentDark = theme === 'dark';
+    setTheme(isCurrentDark ? 'light' : 'dark');
+  }
+
+  let buttonThemeContent;
+  if (theme === 'light') {
+    buttonThemeContent = (
+      <>
+        Dark
+        <span>
+          <IconMoon />
+        </span>
+      </>
+    );
+  } else {
+    buttonThemeContent = (
+      <>
+        Light
+        <span>
+          <IconSun />
+        </span>
+      </>
+    );
   }
 
   return (
-    <div
-      role='button'
-      tabIndex={0}>
-      <p>{String(isChecked)}</p>
-      <input
-        className='theme__button--checkbox'
-        type='checkbox'
-        id='light-dark-mode'
-        value={isChecked}
-        onChange={handleIsChecked}
-      />
-      <label
-        htmlFor='light-dark-mode'
-        className='theme__button'>
-        {!isChecked ? 'Dark' : 'Light'}
-        <span>{!isChecked ? <IconMoon /> : <IconSun />}</span>
-      </label>
-    </div>
+    <>
+      <button
+        className='theme__button'
+        type='button'
+        aria-pressed={theme}
+        onClick={handleToggleTheme}>
+        {buttonThemeContent}
+      </button>
+    </>
   );
 };

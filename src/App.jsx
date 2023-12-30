@@ -1,16 +1,18 @@
 // // api to be use - https://docs.github.com/en/rest/users/users?apiVersion=2022-11-28#get-a-user
 
 import { useState } from 'react';
+import { Octokit } from 'octokit';
+import { ThemeContext } from './contexts/Context';
 import HeaderContainer from './container/HeaderContainer';
 import SearchContainer from './container/SearchContainer';
 import UserContainer from './container/UserContainer';
-import { Octokit } from 'octokit';
 import defaultGithubUser from './data/default_user.json';
 
 const App = () => {
   const [search, setSearch] = useState('');
   const [githubUser, setGithubUser] = useState(defaultGithubUser);
   const [noSearchResult, setNoSearchResult] = useState(false);
+  const [theme, setTheme] = useState('light');
 
   const octokit = new Octokit({
     auth: import.meta.env.VITE_GITHUB_USER_TOKEN,
@@ -44,16 +46,22 @@ const App = () => {
 
   return (
     <>
-      <div className='wrapper'>
-        <HeaderContainer />
-        <SearchContainer
-          search={search}
-          onChangeUser={handleGithubUser}
-          onSearchUser={handleSubmitUser}
-          noSearchResult={noSearchResult}
-        />
-        <UserContainer githubUser={githubUser} />
-      </div>
+      <ThemeContext.Provider value={{ theme, setTheme }}>
+        <div className={`theme-${theme}`}>
+          <div className='container'>
+            <div className='wrapper'>
+              <HeaderContainer />
+              <SearchContainer
+                search={search}
+                onChangeUser={handleGithubUser}
+                onSearchUser={handleSubmitUser}
+                noSearchResult={noSearchResult}
+              />
+              <UserContainer githubUser={githubUser} />
+            </div>
+          </div>
+        </div>
+      </ThemeContext.Provider>
     </>
   );
 };
