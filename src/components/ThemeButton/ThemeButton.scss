@@ -11,9 +11,22 @@
   font-weight: $font-weight-700;
   letter-spacing: 0.15625rem;
   cursor: pointer;
+  transition: color 200ms ease-out;
 
   @include themify($themes) {
     color: themed('color__theme-btn');
+  }
+
+  &:hover {
+    @include themify($themes) {
+      color: themed('color__theme-hover-btn');
+    }
+
+    & > span svg path {
+      @include themify($themes) {
+        fill: themed('color__theme-hover-btn');
+      }
+    }
   }
 
   span {
