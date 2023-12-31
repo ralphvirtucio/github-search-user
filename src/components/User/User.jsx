@@ -14,97 +14,106 @@ export const User = ({
   formatCreatedDate,
   companyLink,
   twitterLink,
+  loading,
 }) => {
   return (
     <>
       <main className='user'>
-        <section className='user__profile'>
-          <img
-            src={data.avatar_url}
-            alt={data.name}
-          />
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          <section className='user__profile'>
+            <img
+              src={data?.avatar_url}
+              alt={data?.name}
+            />
 
-          <div className='user__profile-info'>
-            <div className='user__profile-info--names'>
-              <h1>{formatName(data.name)}</h1>
-              <p className='user__profile-info-login'>@{data.login}</p>
+            <div className='user__profile-info'>
+              <div className='user__profile-info--names'>
+                <h1>{formatName(data?.name)}</h1>
+                <p className='user__profile-info-login'>@{data?.login}</p>
+              </div>
+
+              <p className='user__profile-info--created_at'>
+                Joined {formatCreatedDate(data?.created_at)}
+              </p>
             </div>
 
-            <p className='user__profile-info--created_at'>
-              Joined {formatCreatedDate(data.created_at)}
-            </p>
-          </div>
+            <div
+              className={`user__profile-bio ${isFieldEmptyClassName(
+                data?.bio
+              )}`}>
+              <p>{formatBio(data?.bio)}</p>
+            </div>
 
-          <div
-            className={`user__profile-bio ${isFieldEmptyClassName(data.bio)}`}>
-            <p>{formatBio(data.bio)}</p>
-          </div>
-
-          <div className='user__profile-stats-links'>
-            <ul className='user__profile-stats'>
-              <li>
-                <h4>Repos</h4>
-                <p>{data.public_repos}</p>
-              </li>
-              <li>
-                <h4>Followers</h4>
-                <p>{data.followers}</p>
-              </li>
-              <li>
-                <h4>Following</h4>
-                <p>{data.following}</p>
-              </li>
-            </ul>
-
-            <div className='user__profile-link'>
-              <ul className='user__profile-link-list'>
-                <li className={isFieldEmptyClassName(data.location)}>
-                  <span>
-                    <IconLocation />
-                  </span>
-                  <p>{formatLink(data.location)}</p>
+            <div className='user__profile-stats-links'>
+              <ul className='user__profile-stats'>
+                <li>
+                  <h4>Repos</h4>
+                  <p>{data?.public_repos}</p>
                 </li>
-                <li className={isFieldEmptyClassName(data.blog)}>
-                  <span>
-                    <IconLink />
-                  </span>
-                  <a
-                    href={!data.blog ? null : data.blog}
-                    target={!data.blog ? null : '_blank'}
-                    rel={!data.blog ? null : 'noreferrer'}
-                    aria-disabled={!data.blog ? 'true' : 'false'}>
-                    {formatLink(data.blog)}
-                  </a>
+                <li>
+                  <h4>Followers</h4>
+                  <p>{data?.followers}</p>
                 </li>
-                <li className={isFieldEmptyClassName(data.twitter_username)}>
-                  <span>
-                    <IconTwitter />
-                  </span>
-                  <a
-                    href={twitterLink(data.twitter_username)}
-                    target={!data.twitter_username ? null : '_blank'}
-                    rel={!data.twitter_username ? null : 'noreferrer'}
-                    aria-disabled={!data.twitter_username ? 'true' : 'false'}>
-                    {formatLink(data.twitter_username)}
-                  </a>
-                </li>
-                <li className={isFieldEmptyClassName(data.company)}>
-                  <span>
-                    <IconCompany />
-                  </span>
-
-                  <a
-                    href={companyLink(data.company)}
-                    target={!data.company ? null : '_blank'}
-                    rel={!data.company ? null : 'noreferrer'}
-                    aria-disabled={!data.company ? 'true' : 'false'}>
-                    {formatLink(data.company)}
-                  </a>
+                <li>
+                  <h4>Following</h4>
+                  <p>{data?.following}</p>
                 </li>
               </ul>
+
+              <div className='user__profile-link'>
+                <ul className='user__profile-link-list'>
+                  <li className={isFieldEmptyClassName(data?.location)}>
+                    <span>
+                      <IconLocation />
+                    </span>
+                    <p>{formatLink(data?.location)}</p>
+                  </li>
+                  <li className={isFieldEmptyClassName(data?.blog)}>
+                    <span>
+                      <IconLink />
+                    </span>
+                    <a
+                      href={!data?.blog ? null : data.blog}
+                      target={!data?.blog ? null : '_blank'}
+                      rel={!data?.blog ? null : 'noreferrer'}
+                      aria-disabled={!data?.blog ? 'true' : 'false'}>
+                      {formatLink(data?.blog)}
+                    </a>
+                  </li>
+                  <li className={isFieldEmptyClassName(data?.twitter_username)}>
+                    <span>
+                      <IconTwitter />
+                    </span>
+                    <a
+                      href={twitterLink(data?.twitter_username)}
+                      target={!data?.twitter_username ? null : '_blank'}
+                      rel={!data?.twitter_username ? null : 'noreferrer'}
+                      aria-disabled={
+                        !data?.twitter_username ? 'true' : 'false'
+                      }>
+                      {formatLink(data?.twitter_username)}
+                    </a>
+                  </li>
+                  <li className={isFieldEmptyClassName(data?.company)}>
+                    <span>
+                      <IconCompany />
+                    </span>
+
+                    <a
+                      href={companyLink(data?.company)}
+                      target={!data?.company ? null : '_blank'}
+                      rel={!data?.company ? null : 'noreferrer'}
+                      aria-disabled={!data?.company ? 'true' : 'false'}>
+                      {formatLink(data?.company)}
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
       </main>
     </>
   );
@@ -132,4 +141,5 @@ User.propTypes = {
   companyLink: PropTypes.func,
   twitterLink: PropTypes.func,
   formatCreatedDate: PropTypes.func,
+  loading: PropTypes.bool,
 };

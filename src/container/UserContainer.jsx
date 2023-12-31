@@ -1,12 +1,12 @@
 import { User } from '../components/User/User';
 import PropTypes from 'prop-types';
 
-const UserContainer = ({ githubUser }) => {
+const UserContainer = ({ githubUser, loading }) => {
   function formatName(name) {
     if (name) {
       return name;
     } else {
-      return githubUser.login;
+      return githubUser?.login;
     }
   }
 
@@ -52,10 +52,10 @@ const UserContainer = ({ githubUser }) => {
   }
 
   const shortenMonths = (month) => {
-    if (month.length === 3) {
+    if (month?.length === 3) {
       return month;
     } else {
-      return month.slice(0, 3);
+      return month?.slice(0, 3);
     }
   };
 
@@ -85,16 +85,19 @@ const UserContainer = ({ githubUser }) => {
   }
 
   return (
-    <User
-      data={githubUser}
-      formatName={formatName}
-      formatBio={formatBio}
-      formatLink={formatLink}
-      isFieldEmptyClassName={isFieldEmptyClassName}
-      formatCreatedDate={formatCreatedDate}
-      companyLink={companyLink}
-      twitterLink={twitterLink}
-    />
+    <>
+      <User
+        data={githubUser}
+        formatName={formatName}
+        formatBio={formatBio}
+        formatLink={formatLink}
+        isFieldEmptyClassName={isFieldEmptyClassName}
+        formatCreatedDate={formatCreatedDate}
+        companyLink={companyLink}
+        twitterLink={twitterLink}
+        loading={loading}
+      />
+    </>
   );
 };
 
@@ -113,6 +116,7 @@ UserContainer.propTypes = {
     blog: PropTypes.string,
     company: PropTypes.string,
   }),
+  loading: PropTypes.bool,
 };
 
 export default UserContainer;

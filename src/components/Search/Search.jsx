@@ -14,7 +14,6 @@ export const Search = ({
     onChangeUser(githubUser);
   }
 
-  console.log(isDisabled);
   return (
     <div className='search'>
       <form
