@@ -264,6 +264,11 @@
           }
 
           &.field_empty {
+            p {
+              @include themify($themes) {
+                color: themed('color__not-available');
+              }
+            }
             span {
               svg path {
                 fill: hsla(217, 35%, 45%, 0.5);

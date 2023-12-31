@@ -11,8 +11,9 @@ export const User = ({
   formatBio,
   formatLink,
   isFieldEmptyClassName,
-  linkDisableAttr,
   formatCreatedDate,
+  companyLink,
+  twitterLink,
 }) => {
   return (
     <>
@@ -68,9 +69,10 @@ export const User = ({
                     <IconLink />
                   </span>
                   <a
-                    href={linkDisableAttr(data.blog, data.blog).href}
-                    role={linkDisableAttr(data.blog).role}
-                    aria-disabled={linkDisableAttr(data.blog).ariaDisabled}>
+                    href={!data.blog ? null : data.blog}
+                    target={!data.blog ? null : '_blank'}
+                    rel={!data.blog ? null : 'noreferrer'}
+                    aria-disabled={!data.blog ? 'true' : 'false'}>
                     {formatLink(data.blog)}
                   </a>
                 </li>
@@ -79,11 +81,10 @@ export const User = ({
                     <IconTwitter />
                   </span>
                   <a
-                    href={linkDisableAttr(data.twitter_username).href}
-                    role={linkDisableAttr(data.twitter_username).role}
-                    aria-disabled={
-                      linkDisableAttr(data.twitter_username).ariaDisabled
-                    }>
+                    href={twitterLink(data.twitter_username)}
+                    target={!data.twitter_username ? null : '_blank'}
+                    rel={!data.twitter_username ? null : 'noreferrer'}
+                    aria-disabled={!data.twitter_username ? 'true' : 'false'}>
                     {formatLink(data.twitter_username)}
                   </a>
                 </li>
@@ -91,10 +92,12 @@ export const User = ({
                   <span>
                     <IconCompany />
                   </span>
+
                   <a
-                    href={linkDisableAttr(data.company).href}
-                    role={linkDisableAttr(data.company).role}
-                    aria-disabled={linkDisableAttr(data.company).ariaDisabled}>
+                    href={companyLink(data.company)}
+                    target={!data.company ? null : '_blank'}
+                    rel={!data.company ? null : 'noreferrer'}
+                    aria-disabled={!data.company ? 'true' : 'false'}>
                     {formatLink(data.company)}
                   </a>
                 </li>
@@ -126,6 +129,7 @@ User.propTypes = {
   formatBio: PropTypes.func,
   formatLink: PropTypes.func,
   isFieldEmptyClassName: PropTypes.func,
-  linkDisableAttr: PropTypes.func,
+  companyLink: PropTypes.func,
+  twitterLink: PropTypes.func,
   formatCreatedDate: PropTypes.func,
 };

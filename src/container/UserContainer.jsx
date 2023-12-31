@@ -34,18 +34,20 @@ const UserContainer = ({ githubUser }) => {
     }
   }
 
-  function linkDisableAttr(link, href = '#') {
+  function companyLink(link) {
     if (link) {
-      return {
-        href,
-        ariaDisabled: 'false',
-        role: 'link',
-      };
+      const cleanLink = link.replace('@', '');
+      return `https://github.com/${cleanLink}`;
     } else {
-      return {
-        role: 'link',
-        ariaDisabled: 'true',
-      };
+      return null;
+    }
+  }
+
+  function twitterLink(twitterUsername) {
+    if (twitterUsername) {
+      return `https://twitter.com/${twitterUsername}`;
+    } else {
+      return null;
     }
   }
 
@@ -89,8 +91,9 @@ const UserContainer = ({ githubUser }) => {
       formatBio={formatBio}
       formatLink={formatLink}
       isFieldEmptyClassName={isFieldEmptyClassName}
-      linkDisableAttr={linkDisableAttr}
       formatCreatedDate={formatCreatedDate}
+      companyLink={companyLink}
+      twitterLink={twitterLink}
     />
   );
 };
